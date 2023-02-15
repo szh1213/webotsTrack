@@ -1,0 +1,560 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    ""
+  ]
+  CFM 1e-08
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material1 "one"
+      material2 "two"
+      coulombFriction [
+        20, 10
+      ]
+      bounce 0.9
+      forceDependentSlip [
+        0.1
+      ]
+      softERP 0.8
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.03181420584607212 0.9941754450384517 0.102971067727689 3.6789741535035017
+  position 4.840706308780367 0.9942702899733561 -2.0769214861188927
+  follow "robot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0 -2.84
+  floorSize 100 100
+}
+DEF track_car Robot {
+  translation 6.4142180854113064 0.055957245470023134 -0.08729098578221964
+  rotation -0.0625970781859285 0.99456666153275 0.08317909334793964 0.002085865146390665
+  children [
+    DEF left Track {
+      translation 0 0 -0.4
+      rotation 1 0 0 0
+      children [
+        DEF w0 TrackWheel {
+          position 0.1 0.1731
+          radius 0.04
+          children [
+            DEF zeroWheel Transform {
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  appearance GenericTireAppearance {
+                  }
+                  geometry Cylinder {
+                    height 0.03
+                    radius 0.04
+                  }
+                }
+              ]
+            }
+          ]
+        }
+        DEF w1 TrackWheel {
+          position 0.051 0.0866
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w2 TrackWheel {
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w3 TrackWheel {
+          position -0.1 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w4 TrackWheel {
+          position -0.2 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w5 TrackWheel {
+          position -0.3 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w6 TrackWheel {
+          position -0.4 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w7 TrackWheel {
+          position -0.5 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w8 TrackWheel {
+          position -0.6 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w9 TrackWheel {
+          position -0.7 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w10 TrackWheel {
+          position -0.8 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w11 TrackWheel {
+          position -0.9 0
+          radius 0.04
+          children [
+            USE zeroWheel
+          ]
+        }
+        DEF w12 TrackWheel {
+          position -0.04 0.078
+          radius 0.04
+          inner FALSE
+        }
+      ]
+      name "left"
+      contactMaterial "two"
+      boundingObject Group {
+        children [
+          DEF blet_bdo0 Transform {
+            translation 0.1 0.1732 0
+            rotation 1 0 0 1.5708
+            children [
+              DEF blet_cyd Shape {
+                appearance TireRubber {
+                  type "bike"
+                }
+                geometry Cylinder {
+                  height 0.03
+                  radius 0.056
+                }
+              }
+            ]
+          }
+          DEF blet_bdo1 Transform {
+            translation 0.05 0.0866 0
+            rotation 0 0 1 1.0472
+            children [
+              Box {
+                size 0.2 0.112 0.03
+              }
+            ]
+          }
+          DEF blet_bdo2 Transform {
+            rotation 1 0 0 1.5708
+            children [
+              USE blet_cyd
+            ]
+          }
+          DEF blet_bdo3 Transform {
+            translation -0.45 0 0
+            children [
+              Box {
+                size 0.9 0.112 0.03
+              }
+            ]
+          }
+          DEF blet_bdo4 Transform {
+            translation -0.9 0 0
+            rotation 1 0 0 1.5708
+            children [
+              USE blet_cyd
+            ]
+          }
+        ]
+      }
+      physics Physics {
+        density -1
+        mass 1
+        centerOfMass [
+          0 0 0
+        ]
+      }
+      locked TRUE
+      translationStep 0.001
+      rotationStep 0.061799
+      device [
+        DEF left_motor LinearMotor {
+          name "left_motor"
+          maxForce 100000
+        }
+      ]
+      animatedGeometry DEF belt Group {
+        children [
+          Transform {
+            translation 0 0.005 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.141176 0.141176 0.141176
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.02 0.01 0.03
+                }
+              }
+            ]
+            rotationStep 0.261799
+          }
+          Transform {
+            translation -0.005 0.012 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.141176 0.141176 0.141176
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.008 0.005 0.03
+                }
+              }
+            ]
+            rotationStep 0.261799
+          }
+        ]
+      }
+      geometriesCount 120
+    }
+    DEF right Track {
+      translation 0 0 0.4
+      children [
+        USE w0
+        USE w1
+        USE w2
+        USE w3
+        USE w4
+        USE w5
+        USE w6
+        USE w7
+        USE w8
+        USE w9
+        USE w10
+        USE w11
+        USE w12
+      ]
+      name "right"
+      contactMaterial "two"
+      boundingObject Group {
+        children [
+          USE blet_bdo0
+          USE blet_bdo1
+          USE blet_bdo2
+          USE blet_bdo3
+          USE blet_bdo4
+        ]
+      }
+      physics Physics {
+        density -1
+        mass 1
+        centerOfMass [
+          0 0 0
+        ]
+      }
+      locked TRUE
+      device [
+        DEF right_motor LinearMotor {
+          name "right_motor"
+          maxForce 100000
+        }
+      ]
+      animatedGeometry Group {
+        children [
+          USE belt
+        ]
+      }
+      geometriesCount 120
+    }
+    DEF track Group {
+      children [
+        Transform {
+          translation -0.04 0.056 0
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                position -0.4989999999707157
+                axis 0 0 1
+                minStop -0.5
+                maxStop 0.0001
+                suspensionDampingConstant 1000
+              }
+              device [
+                RotationalMotor {
+                  name "rot_motor"
+                  consumptionFactor 1000
+                  minPosition -0.5
+                  maxPosition -0.02
+                  maxTorque 1000
+                }
+              ]
+              endPoint Solid {
+                translation -0.0009734545753839571 0.0001872144659731495 -1.1711100000000654e-05
+                rotation -5.4303579983033034e-05 -0.00057090657351297 0.9999998355583893 -0.1896782231882856
+                children [
+                  DEF b0 Transform {
+                    translation 0 0.5 0.4
+                    children [
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 1
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                  DEF b1 Transform {
+                    translation 0 0.5 -0.4
+                    children [
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 1
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                  DEF b2 Transform {
+                    translation 0 1 0
+                    rotation 1 0 0 1.5707
+                    children [
+                      Shape {
+                        appearance Pcb {
+                        }
+                        geometry Box {
+                          size 0.1 0.1 0.1
+                        }
+                      }
+                    ]
+                  }
+                  DEF b3 Transform {
+                    translation -0.45 0 0
+                    children [
+                      Shape {
+                        appearance ThreadMetalPlate {
+                        }
+                        geometry Box {
+                          size 0.9 0.01 0.8
+                        }
+                      }
+                    ]
+                  }
+                  DEF IMU Transform {
+                    translation 0 1 0
+                    rotation 1 0 0 1.5707
+                    children [
+                      InertialUnit {
+                        translation -0.1 0 0
+                        children [
+                          Shape {
+                            appearance SolarCell {
+                            }
+                            geometry Box {
+                              size 0.1 0.1 0.1
+                            }
+                          }
+                        ]
+                        name "inertial unit(2)"
+                      }
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 0.8
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                ]
+                name "solid(2)"
+                contactMaterial "two"
+                boundingObject Group {
+                  children [
+                    USE b0
+                    USE b1
+                    USE b2
+                    USE b3
+                  ]
+                }
+                physics Physics {
+                  density -1
+                  mass 0.01
+                }
+                locked TRUE
+                linearVelocity -2.6614270191367493e-09 2.0508893529404923e-08 -3.0925393250776694e-08
+                angularVelocity -8.843006926587601e-08 -2.7364803018938453e-08 3.797685120394243e-08
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.05 0 0
+          children [
+            Shape {
+              appearance ThreadMetalPlate {
+              }
+              geometry Box {
+                size 0.02 0.05 0.7
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.3 0 0
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance ThreadMetalPlate {
+              }
+              geometry Cylinder {
+                height 0.7
+                radius 0.025
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.7 0 0
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance ThreadMetalPlate {
+              }
+              geometry Cylinder {
+                height 0.7
+                radius 0.025
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  contactMaterial "two"
+  boundingObject DEF track Group {
+    children [
+      Transform {
+        translation -0.04 0.078 0
+        rotation 0 0 1 -0.8000003061004253
+      }
+      Transform {
+        translation -0.05 0 0
+        children [
+          Shape {
+            appearance ThreadMetalPlate {
+            }
+            geometry Box {
+              size 0.02 0.05 0.7
+            }
+          }
+        ]
+      }
+      Transform {
+        translation -0.3 0 0
+        rotation 1 0 0 1.57
+        children [
+          Shape {
+            appearance ThreadMetalPlate {
+            }
+            geometry Cylinder {
+              height 0.7
+              radius 0.025
+            }
+          }
+        ]
+      }
+      Transform {
+        translation -0.7 0 0
+        rotation 1 0 0 1.57
+        children [
+          Shape {
+            appearance ThreadMetalPlate {
+            }
+            geometry Cylinder {
+              height 0.7
+              radius 0.025
+            }
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 1
+    centerOfMass [
+      -0.3481522870896769 0 0
+    ]
+    inertiaMatrix [
+      0.17100933547282657 0.9705684004140429 0.802751569330153
+      0 0 -8.904281399958505e-05
+    ]
+  }
+  controller "track_ct_py"
+  linearVelocity 2.552596174609789e-08 2.973181312881934e-08 1.7152986095947397e-09
+  angularVelocity -8.843006904568193e-08 -2.7364802855042613e-08 3.7976851874870307e-08
+}
+Pedestrian {
+  translation 2 1.27 0
+}
+Solid {
+  translation 5.229870843296892 0.3996069066209564 1.0461631170152867
+  rotation -0.8274198907353125 0.3970990511770638 -0.3971003248170909 -1.7591161911166964
+  children [
+    Shape {
+      appearance RedBricks {
+      }
+      geometry DEF cube Box {
+        size 0.8 0.8 0.8
+      }
+    }
+  ]
+  boundingObject USE cube
+  physics Physics {
+    density 10
+    mass 1
+  }
+  linearVelocity 3.870170387667381e-06 5.430318678309633e-06 1.987592381527891e-06
+  angularVelocity 4.968980856411731e-06 2.100251254793232e-17 -9.675425779725582e-06
+}
+StraightStairs {
+  translation 6.73 0 -0.12
+  startingStairs FALSE
+  contactMaterial "two"
+}

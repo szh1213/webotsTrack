@@ -1,0 +1,179 @@
+
+    DEF tor Robot {
+      translation -0.04 0.078 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            position -0.8167724043940181
+            axis 0 0 1
+            minStop -1.3
+            maxStop -0.7
+            springConstant 10000
+            dampingConstant 10000
+            staticFriction 10000
+            suspensionSpringConstant 10000
+            suspensionDampingConstant 10000
+          }
+          device [
+            RotationalMotor {
+              maxTorque 10000
+            }
+          ]
+          endPoint Solid {
+            translation 0.011101821875526047 -0.0026460020291984385 0.00027239653780483663
+            rotation -0.0024940590384303204 0.0030871549322506143 -0.9999921245409572 0.01674934246750262
+            children [
+              Robot {
+                translation -0.8 -0.12 0
+                rotation 0 0 1 1.0617996938995746
+                children [
+                  Hinge2Joint {
+                    jointParameters HingeJointParameters {
+                      position 110.44919646539738
+                    }
+                    jointParameters2 JointParameters {
+                      position -113.29048572667845
+                    }
+                    endPoint Solid {
+                      rotation -0.9179198959131377 -0.3851891131280651 -0.09514416332297605 2.677015775761518
+                      children [
+                        DEF anywheel Transform {
+                          rotation 0 0 1 0
+                          children [
+                            Shape {
+                              geometry Sphere {
+                                radius 0.05
+                                subdivision 4
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                      boundingObject USE anywheel
+                      physics Physics {
+                      }
+                      linearVelocity 0.00029485061986176027 1.1980346664525138e-06 -2.38570427543328e-07
+                      angularVelocity -4.76572933243922e-06 -0.006260602125284827 -0.005897018994319961
+                    }
+                  }
+                ]
+                name "any_wheel_robot"
+                physics Physics {
+                }
+              }
+              Group {
+                children [
+                  DEF b0 Transform {
+                    translation 0 0.5 0.4
+                    children [
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 1
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                  DEF b1 Transform {
+                    translation 0 0.5 -0.4
+                    children [
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 1
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                  DEF IMU Transform {
+                    translation 0 1 0
+                    rotation 1 0 0 1.5707
+                    children [
+                      InertialUnit {
+                        translation -0.1 0 0
+                        children [
+                          Shape {
+                            appearance SolarCell {
+                            }
+                            geometry Box {
+                              size 0.1 0.1 0.1
+                            }
+                          }
+                        ]
+                        name "inertial unit(1)"
+                      }
+                      Shape {
+                        appearance CorrodedMetal {
+                        }
+                        geometry Cylinder {
+                          height 0.8
+                          radius 0.015
+                        }
+                      }
+                    ]
+                  }
+                  DEF b3 Transform {
+                    translation 0 1 0
+                    rotation 1 0 0 1.5707
+                    children [
+                      Shape {
+                        appearance Pcb {
+                        }
+                        geometry Box {
+                          size 0.1 0.1 0.1
+                        }
+                      }
+                    ]
+                  }
+                  DEF b4 Transform {
+                    translation -0.45 0 0
+                    children [
+                      Shape {
+                        appearance ThreadMetalPlate {
+                        }
+                        geometry Box {
+                          size 0.9 0.01 0.8
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+              Robot {
+                translation -0.45 0 0
+                children [
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                    }
+                    endPoint DEF twoSlot Slot {
+                    }
+                  }
+                ]
+                name "hinge_robot"
+              }
+            ]
+            boundingObject Group {
+              children [
+                USE b0
+                USE b1
+                USE b3
+                USE b4
+              ]
+            }
+            physics Physics {
+              damping Damping {
+              }
+            }
+            linearVelocity 0.0002923549404244693 5.521533449882076e-07 4.527421473235644e-08
+            angularVelocity -1.0543859298461857e-09 6.643614598772456e-07 1.5277993571881867e-06
+          }
+        }
+      ]
+      physics Physics {
+        mass 1
+      }
+    }
